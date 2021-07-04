@@ -1,0 +1,33 @@
+{
+  "required_api_version": "^2.0.0",
+  "name": "Everdo Integration",
+  "description": "A simple integration with everdo",
+  "developer_name": "Pixel Hat",
+  "icon": "images/logo.png",
+  "options": {
+    "query_debounce": 0.1
+  },
+  "preferences": [
+    {
+      "id": "Everdokw",
+      "type": "keyword",
+      "name": "Define keyword",
+      "description": "Everdo integration",
+      "default_value": "tk"
+    },
+    {
+      "id": "token",
+      "type": "input",
+      "name": "Everdo Token",
+      "description": "Your Everdo token",
+      "default_value": "<your token>"
+    },
+    {
+      "id": "url",
+      "type": "input",
+      "name": "url",
+      "description": "Your Everdo url",
+      "default_value": "https://localhost:11111"
+    }
+  ]
+}
