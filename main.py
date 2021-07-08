@@ -11,11 +11,11 @@ import requests
 class EverdoExtension(Extension):
     def __init__(self):
         super().__init__()
-        self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
-        self.subscribe(ItemEnterEvent, ItemEnterEventListener())
+        self.subscribe(KeywordQueryEvent, KeywordQuery())
+        self.subscribe(ItemEnterEvent, InsertTask())
 
 
-class KeywordQueryEventListener(EventListener):
+class KeywordQuery(EventListener):
     def on_event(self, event, extension):
         argument = event.get_argument()
         items = []
@@ -33,7 +33,7 @@ class KeywordQueryEventListener(EventListener):
         return RenderResultListAction(items)
 
 
-class ItemEnterEventListener(EventListener):
+class InsertTask(EventListener):
     def on_event(self, event, extension):
         token = extension.preferences["token"]
         everdo_url = extension.preferences["url"]
