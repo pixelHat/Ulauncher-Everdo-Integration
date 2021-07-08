@@ -3,7 +3,6 @@ from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
-from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 
 import requests
@@ -25,10 +24,10 @@ class KeywordQueryEventListener(EventListener):
         data = {"action": "add", "value": argument}
         items.append(
             ExtensionResultItem(
-                icon="images/icon.png",
+                icon="",
                 name=name,
                 description=description,
-                on_enter=ExtensionCustomAction(data, keep_app_open=True),
+                on_enter=ExtensionCustomAction(data, keep_app_open=False),
             )
         )
         return RenderResultListAction(items)
@@ -49,13 +48,7 @@ class ItemEnterEventListener(EventListener):
             headers={"Content-Type": "application/json"},
             verify=False,
         )
-        return RenderResultListAction(
-            [
-                ExtensionResultItem(
-                    icon="images/icon.png", name="new_name", on_enter=HideWindowAction()
-                )
-            ]
-        )
+        return None
 
 
 if __name__ == "__main__":
